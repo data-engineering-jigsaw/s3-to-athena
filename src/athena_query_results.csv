@@ -1,4 +1,0 @@
-"siteid","monitorid","parameter","startdatetime","aobs","bobs","cobs","aobsadj","bobsadj","cobsadj","uom","adjcode","uncertainty","quality"
-"TESTS1","TESTM1","42602","2020-03-27 12:06","1.0111","","","2.1121","","","8","A2","",""
-"TESTS1","TESTM1","85101","2020-03-27 12:06","10.4305","","",,"","","105","","",""
-"TESTS1","TESTM1","187100","2020-03-27 12:06","30.11211","","",,"","","132","","",""
