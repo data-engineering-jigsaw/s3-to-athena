@@ -1,27 +1,25 @@
 from index import *
-
-bucket_name = 'JigsawTxQuery'
+import pandas as pd
+bucket_name = 'jigsawtexasquery'
 
 bucket = s3.create_bucket(Bucket = bucket_name)
+
 
 # pull data and 
 # coerce to line separate list of dictionaries
 name = 'HONDURAS MAYA CAFE & BAR LLC'
 receipts = find_receipts(name)
+receipts_df = pd.DataFrame(receipts)
+file_name = f'{cleaned_name(name)}.csv'
+receipts_df.to_csv(file_name, index = False)
 
-in_mem_text = build_in_mem_file(receipts)
+df = pd.read_csv(file_name)
 
-# upload to s3 object in our bucket
-file_name = cleaned_name(name)
+# s3.upload_file(file_name, bucket_name, file_name)
 
-# s3.put_object(
-#         Body=in_mem_text,
-#         Bucket=bucket_name,
-#         Key=file_name
-#     )
+# obj = s3.get_object(Bucket=bucket_name, Key=file_name)
+# text = obj['Body'].read()
 
-# create bucket for results
-
-# bucket_name = 'JigsawTxResults'
+# bucket_name = 'jigsawtexasresults'
 
 # results_bucket = s3.create_bucket(Bucket = bucket_name)
